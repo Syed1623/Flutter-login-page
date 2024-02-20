@@ -26,15 +26,19 @@ class _InputFieldState extends State<InputField> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+        children: [
           TextField(
             controller: _controllerOne,
             autocorrect: true,
             autofocus: true,
             decoration: InputDecoration(
-                border:OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: 'Enter Your Name...',
-                hintText: "Syed Arbaz"),
+                hintText: "Syed Arbaz",
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                )),
           ),
           const SizedBox(height: 20), // Adds space between the two TextFields
           TextField(
@@ -42,11 +46,13 @@ class _InputFieldState extends State<InputField> {
             autocorrect: true,
             autofocus: true,
             decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 labelText: 'Enter Your Email...',
-                hintText: "syedarbaz@gmail.com"),
+                hintText: "syedarbaz@gmail.com",
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                )),
           ),
           const SizedBox(height: 20), // Adds space before the button
           ElevatedButton(
@@ -54,13 +60,16 @@ class _InputFieldState extends State<InputField> {
               // Print the current value of both text fields to the console
               print("First input: ${_controllerOne.text}");
               print("Second input: ${_controllerTwo.text}");
+              setState(() {
+                _controllerOne.clear();
+                _controllerTwo.clear();
+              });
             },
-            style:ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black)
-            ),
-            child:const Padding(
-              padding:  EdgeInsets.all(12.0),
-              child:  Text(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.black)),
+            child: const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text(
                 'Submit',
                 style: TextStyle(
                     color: Colors.amber,
